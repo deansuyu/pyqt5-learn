@@ -9,7 +9,7 @@ from PyQt5 import QtGui, QtWidgets, QtCore, QtWinExtras
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from Ui_login import Ui_Dialog
-from xinxi import MainWindow_1
+#from xinxi import MainWindow_1
 
 
 class Dialog(QDialog, Ui_Dialog):
@@ -18,6 +18,7 @@ class Dialog(QDialog, Ui_Dialog):
        
         super(Dialog, self).__init__(parent)
         self.setupUi(self)
+        self.parent=parent
         
     @pyqtSlot()
     def on_ok_clicked(self):
@@ -31,9 +32,10 @@ class Dialog(QDialog, Ui_Dialog):
                 QMessageBox.information(self, "提示", " 密码不能为空",QMessageBox.Ok, QMessageBox.Ok)
             else:
                 if username=="admin" and password =="admin":
-                    self.hide()
-                    self.mainwindow=MainWindow_1()
-                    self.mainwindow.show()
+                    self.parent.show()
+#                    self.mainwindow=MainWindow_1()
+#                    self.mainwindow.show()
+                    self.delete(self)
                 else:
                     QMessageBox.information(self, "提示", " 密码错误",QMessageBox.Ok, QMessageBox.Ok)
                 
