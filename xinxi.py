@@ -11,6 +11,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from Ui_xinxi import Ui_MainWindow
 import login  
+import info
 
 class MainWindow_1(QMainWindow, Ui_MainWindow):
     """
@@ -25,12 +26,14 @@ class MainWindow_1(QMainWindow, Ui_MainWindow):
         """
         super(MainWindow_1, self).__init__(parent)
         self.setupUi(self)
-#        self.Dialog_1=login.Dialog(self)
-#        self.Dialog_1.exec_()
+        self.Dialog_1=login.Dialog(self)
+        self.Dialog_1.exec_()
+        self.add_info=info.Form()
         
     @pyqtSlot()
     def on_add_btn_clicked(self):
-        print("123",self.Dialog_1)
+        
+        self.add_info.show()
     
 
 if __name__ == "__main__":
